@@ -1,15 +1,16 @@
 # Spectral Modularity Optimization: Recursive Bisection on the Karate Club Graph
+Author: Avinash Kumar Thakur
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Academic-Project-orange)
 
-##  Project Overview
+## Project Overview
 This project implements a **Recursive Spectral Bisection** algorithm to detect community structures within complex networks. Using **Zachary's Karate Club** dataset as a benchmark, the algorithm maximizes the **Modularity Score ($Q$)** to mathematically partition the graph into subgroups without prior knowledge of ground truth labels.
 
 This implementation focuses on the intersection of **Linear Algebra** and **Network Theory**, specifically leveraging the spectral properties of the Modularity Matrix to identify latent social fractures.
 
-##  Mathematical Foundation
+## Mathematical Foundation
 The core of this project relies on the **Modularity Matrix ($B$)**, defined as:
 
 $$B_{ij} = A_{ij} - \frac{k_i k_j}{2m}$$
@@ -26,7 +27,7 @@ The algorithm utilizes the **Leading Eigenvector** of this matrix to perform opt
 2.  **Spectral Partitioning:** Split nodes based on the sign of the eigenvector components ($\vec{u}_i > 0$ vs $\vec{u}_i < 0$).
 3.  **Recursive Refinement:** The process repeats recursively for each community until the leading eigenvalue $\lambda \le 0$, indicating that no further modularity gain is possible.
 
-##  Results & Analysis
+## Results & Analysis
 The algorithm successfully fractured the network into **13 distinct micro-communities**, revealing fine-grained social structures beyond the primary binary split.
 
 ### Key Observations from Execution:
@@ -38,24 +39,37 @@ The algorithm successfully fractured the network into **13 distinct micro-commun
 The analysis identified the following stable sub-cliques:
 > `[26, 29]`, `[24, 25, 28, 31]`, `[23, 27]`, `[0, 11, 17]`, `[4, 5, 6, 10, 16]`, `[8, 30]`, `[2]`, `[1, 19, 21]`, `[3, 7, 12]`, `[13]`, `[14, 20, 32]`, `[9, 18, 22, 33]`, `[15]`
 
-## 📸 Visual Output
-The algorithm generates visualization states for every iteration. Below is the primary split (Iteration 0) where the two main factions emerge.
+## Visual Output
 
+### 1. Network Evolution
+The algorithm generates visualization states for every iteration. 
 
-##  Repository Contents
+**Iteration 0 (Primary Split):**
+Here we see the clear emergence of the two main factions.
+![Iteration 0 Primary Split](communities_iter_00.png)
+
+**Iteration 24 (Final State):**
+The final stable state with 13 detected micro-communities.
+![Iteration 24 Final State](communities_iter_24.png)
+
+### 2. Metric Tracking
+We tracked **Betweenness Centrality** throughout the process. High betweenness nodes act as bridges; as the graph fractures, these values shift, highlighting the changing topology.
+![Betweenness Evolution](metric_evolution_betweenness.png)
+
+## Repository Contents
 - `main.py`: Core recursive algorithm, linear algebra computations, and visualization logic.
 - `analysis.ipynb`: Interactive Jupyter Notebook for step-by-step analysis.
 - `outputs/`: Directory containing generated community plots and JSON results.
 - `final_communities.json`: The raw output data of the node partitions.
 - `requirements.txt`: Python dependencies.
 
-##  Academic Context
+## Academic Context
 This project was developed as part of the **Graph Theory & Network Analysis** curriculum at **IISER Thiruvananthapuram**.
 
 **Supervisor:** Dr. Saptarishi Bej  
 **Course:** DSC212 (Graph Theory Module)
 
-## 🛠️ Usage
+## Usage
 To reproduce the analysis:
 
 ```bash
