@@ -4,12 +4,12 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Academic-Project-orange)
 
-## 📌 Project Overview
+##  Project Overview
 This project implements a **Recursive Spectral Bisection** algorithm to detect community structures within complex networks. Using **Zachary's Karate Club** dataset as a benchmark, the algorithm maximizes the **Modularity Score ($Q$)** to mathematically partition the graph into subgroups without prior knowledge of ground truth labels.
 
 This implementation focuses on the intersection of **Linear Algebra** and **Network Theory**, specifically leveraging the spectral properties of the Modularity Matrix to identify latent social fractures.
 
-## 🧮 Mathematical Foundation
+##  Mathematical Foundation
 The core of this project relies on the **Modularity Matrix ($B$)**, defined as:
 
 $$B_{ij} = A_{ij} - \frac{k_i k_j}{2m}$$
@@ -26,7 +26,7 @@ The algorithm utilizes the **Leading Eigenvector** of this matrix to perform opt
 2.  **Spectral Partitioning:** Split nodes based on the sign of the eigenvector components ($\vec{u}_i > 0$ vs $\vec{u}_i < 0$).
 3.  **Recursive Refinement:** The process repeats recursively for each community until the leading eigenvalue $\lambda \le 0$, indicating that no further modularity gain is possible.
 
-## 📊 Results & Analysis
+##  Results & Analysis
 The algorithm successfully fractured the network into **13 distinct micro-communities**, revealing fine-grained social structures beyond the primary binary split.
 
 ### Key Observations from Execution:
@@ -41,17 +41,15 @@ The analysis identified the following stable sub-cliques:
 ## 📸 Visual Output
 The algorithm generates visualization states for every iteration. Below is the primary split (Iteration 0) where the two main factions emerge.
 
-![Community Split](outputs/communities_iter_00.png)
-*(Note: To see the full evolution, run the notebook to generate images for all 24 iterations)*
 
-## 📂 Repository Contents
+##  Repository Contents
 - `main.py`: Core recursive algorithm, linear algebra computations, and visualization logic.
 - `analysis.ipynb`: Interactive Jupyter Notebook for step-by-step analysis.
 - `outputs/`: Directory containing generated community plots and JSON results.
 - `final_communities.json`: The raw output data of the node partitions.
 - `requirements.txt`: Python dependencies.
 
-## 🎓 Academic Context
+##  Academic Context
 This project was developed as part of the **Graph Theory & Network Analysis** curriculum at **IISER Thiruvananthapuram**.
 
 **Supervisor:** Dr. Saptarishi Bej  
